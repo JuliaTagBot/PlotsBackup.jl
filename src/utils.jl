@@ -279,6 +279,7 @@ function _expand_limits(lims, x)
     lims[2] = max(lims[2], e2)
   # catch err
   #   warn(err)
+  catch
   end
   nothing
 end
@@ -365,7 +366,7 @@ isatom() = isdefined(Main, :Atom) && Main.Atom.isconnected()
 
 function is_installed(pkgstr::AbstractString)
     try
-        Pkg.installed(pkgstr) === nothing ? false: true
+        Pkg.installed(pkgstr) === nothing ? false : true
     catch
         false
     end
